@@ -31,7 +31,7 @@ If you don't have Python installed, you can download it from the official websit
 
 ```pip install openai```
 
-3. Replace the placeholder `your_api_key` in the `summarize-transcript.py` script with your actual OpenAI API key. You can obtain an API key by signing up for an account on the OpenAI website: https://beta.openai.com/signup/
+3. Rename `config_template.py` to `config.py`, open in a text editor and replace the placeholder `your_api_key` in the `config.py` file with your actual OpenAI API key. You can obtain an API key by signing up for an account on the OpenAI website: https://beta.openai.com/signup/
 
 4. In the terminal or command prompt, navigate to the directory containing both the `summarize-transcript.py` script and the transcript file (generated using `caption-to-transcript.py` or any other transcript file you'd like to summarize). Run the following command:
 
