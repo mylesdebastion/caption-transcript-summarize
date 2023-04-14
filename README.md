@@ -1,19 +1,21 @@
-# caption-transcript-summarize
- Python scripts to help parse and summarize audio .vtt transcripts into summaries, topic lists and action items with via ChatGPT
+# Caption Transcript Summarize
+ Python scripts to help parse and summarize .vtt or .txt transcripts from Zoom meetings or Youtube videos into summaries, topic lists and action items with via ChatGPT
 
 ---
 ### Project Functionality
-Two separate Python scripts. The first script will convert the .vtt caption file into a plain text transcript, and the second script will parse the transcript into 2000-character chunks and generate a summary and action items using ChatGPT.
+Two separate Python scripts. The first script will convert the .vtt or .txt caption file into a plain text transcript, and the second script will parse the transcript into 2000-character chunks and generate a summary and action items using ChatGPT.
 
 ### Installation
-Install dependencies
-* pip install openai
+This project uses Python programming language and requires pip to install the necessary packages. 
+
+```pip install openai```
+```pip install tqdm```
 
 ### Usage
 Use the following commands to convert the .vtt file and generate the summary:
 
-* python vtt_to_transcript.py input.vtt output.txt
-* python summarize_transcript.py output.txt
+```python vtt_to_transcript.py input.vtt output.txt```
+```python summarize_transcript.py output.txt```
 
 Remember to replace 'your_api_key' in the summarize_transcript.py script with your actual OpenAI API key. The output will be printed to the console. You can redirect the output to a file if you wish to save it.
  
@@ -30,6 +32,7 @@ If you don't have Python installed, you can download it from the official websit
 2. Install the required libraries. Open your terminal or command prompt, navigate to the directory containing the `summarize-transcript.py` script, and run the following command:
 
 ```pip install openai```
+```pip install tqdm```
 
 3. Rename `config_template.py` to `config.py`, open in a text editor and replace the placeholder `your_api_key` in the `config.py` file with your actual OpenAI API key. You can obtain an API key by signing up for an account on the OpenAI website: https://beta.openai.com/signup/
 
