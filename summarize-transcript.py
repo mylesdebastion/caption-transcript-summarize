@@ -4,8 +4,8 @@ import textwrap
 import os
 from datetime import datetime
 
-# Replace 'your_api_key' with your OpenAI API key
-openai.api_key = 'your_api_key'
+import config
+openai.api_key = config.api_key
 
 def generate_summary_chunks(transcript_file):
     with open(transcript_file, 'r') as file:
@@ -32,6 +32,11 @@ def save_summary(summary, bullet_list, transcript_file):
     base_name = os.path.basename(transcript_file)
     name, ext = os.path.splitext(base_name)
     today = datetime.today().strftime('%y%m%d')
+    
+    # Remove existing date prefix if present
+    if name.startswith(today):
+        name = name[len(today) + 1:]
+
     summary_file = f"{today}_{name}_summary{ext}"
 
     with open(summary_file, 'w') as file:
@@ -40,6 +45,7 @@ def save_summary(summary, bullet_list, transcript_file):
         file.write(bullet_list)
 
     return summary_file
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
