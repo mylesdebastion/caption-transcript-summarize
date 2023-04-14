@@ -3,8 +3,10 @@ import sys
 import textwrap
 import os
 from datetime import datetime
-
 import config
+from tqdm.auto import tqdm
+import time
+
 openai.api_key = config.api_key
 
 def generate_summary_chunks(transcript_file):
@@ -12,18 +14,21 @@ def generate_summary_chunks(transcript_file):
         content = file.read()
 
     summary = ''
-    for chunk in textwrap.wrap(content, 2000):
+    chunks = textwrap.wrap(content, 2000)
+    print("Generating summary chunks...")
+    for chunk in tqdm(chunks, desc="Processing", ncols=100):
         prompt = f"Create a meeting summary from the following text:\n{chunk}"
-        response = openai.Completion.create(engine='text-davinci-002', prompt=prompt, max_tokens=150, n=1, stop=None, temperature=0.7)
+        response = openai.Completion.create(engine='text-davinci-003', prompt=prompt, max_tokens=150, n=1, stop=None, temperature=0.7)
         summary += response.choices[0].text.strip()
 
     return summary
 
 def generate_bullet_list(summary):
+    print("Generating bullet list...")
     prompt = (
-        f"Create a bullet list of topic descriptions and suggested action items from the following summary:\n{summary}"
+        f"Create a concise bullet list of key points and action items from the following summary:\n{summary}"
     )
-    response = openai.Completion.create(engine='text-davinci-002', prompt=prompt, max_tokens=150, n=1, stop=None, temperature=0.7)
+    response = openai.Completion.create(engine='text-davinci-003', prompt=prompt, max_tokens=150, n=1, stop=None, temperature=0.5)
     bullet_list = response.choices[0].text.strip()
 
     return bullet_list
@@ -32,7 +37,7 @@ def save_summary(summary, bullet_list, transcript_file):
     base_name = os.path.basename(transcript_file)
     name, ext = os.path.splitext(base_name)
     today = datetime.today().strftime('%y%m%d')
-    
+
     # Remove existing date prefix if present
     if name.startswith(today):
         name = name[len(today) + 1:]
@@ -45,7 +50,6 @@ def save_summary(summary, bullet_list, transcript_file):
         file.write(bullet_list)
 
     return summary_file
-
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

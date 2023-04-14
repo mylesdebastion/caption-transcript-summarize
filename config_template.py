@@ -1,1 +1,1 @@
-api_key = "your_api_key"
+api_key = "your_ChatGPT_api_key"
