@@ -1,6 +1,8 @@
 # Caption Transcript Summarize
  Python scripts to help parse and summarize .vtt or .txt transcripts from Zoom meetings or Youtube videos into summaries, topic lists and action items with via ChatGPT
 
+With these scripts, a hour one meeting with ~6000 spoken words can be summarize down to ~1500 words.
+
 ---
 ### Project Functionality
 Two separate Python scripts. The first script will convert the .vtt or .txt caption file into a plain text transcript, and the second script will parse the transcript into 2000-character chunks and generate a summary and action items using ChatGPT.
