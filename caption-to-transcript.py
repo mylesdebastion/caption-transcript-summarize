@@ -8,7 +8,7 @@ def convert_file_to_transcript(input_file):
     base_name = os.path.basename(input_file)
     name, ext = os.path.splitext(base_name)
     today = datetime.today().strftime('%y%m%d')
-    output_file = f"{today}_{name}_transcript{ext}"
+    output_file = f"{today}_{name}_transcript.txt"
 
     with open(input_file, 'r') as file, open(output_file, 'w') as transcript:
         content = file.read()
