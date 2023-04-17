@@ -16,7 +16,7 @@ This project uses Python programming language and requires pip to install the ne
 ### Usage
 Use the following commands to convert the .vtt file and generate the summary:
 
-* ```python vtt_to_transcript.py input.vtt output.txt```
+* ```python caption-to-transcript.py input.vtt```
 * ```python summarize_transcript.py output.txt```
 
 Remember to replace 'your_api_key' in the summarize_transcript.py script with your actual OpenAI API key. The output will be printed to the console. You can redirect the output to a file if you wish to save it.

@@ -14,7 +14,7 @@ def generate_summary_chunks(transcript_file):
         content = file.read()
 
     summary = ''
-    chunks = textwrap.wrap(content, 2000)
+    chunks = textwrap.wrap(content, 4000)
     print("Generating summary chunks...")
     for chunk in tqdm(chunks, desc="Processing", ncols=100):
         prompt = f"Create a meeting summary from the following text:\n{chunk}"

@@ -35,7 +35,7 @@ def convert_file_to_transcript(input_file):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python vtt_to_transcript.py <input_file>")
+        print("Usage: python caption-to-transcript.py <input_file>")
     else:
         output_file = convert_file_to_transcript(sys.argv[1])
         print(f"Transcript saved as: {output_file}")
